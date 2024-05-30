@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Plano de Aula</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_index.css') }}">
+</head>
+<body>
+    <div class="conteiner">
+        <nav>
+            <div class="img">
+                <img src="{{ url_for('static', filename='img/planlab logo branco p.png') }}" alt="">
+            </div>
+            <ul class="side-itens">
+                <li class="side-item-box">
+                    <a href="{{ url_for('index') }}">
+                        <img src="{{ url_for('static', filename='img/MaterialSymbolsHomeOutlineRounded.png') }}" alt="">
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="side-item-box active">
+                    <a href="{{ url_for('planos_de_aula') }}">
+                        <img src="{{ url_for('static', filename='img/MaterialSymbolsContractEditOutlineRounded.png') }}" alt="">
+                        <span>Planos de Aula</span>
+                    </a>
+                </li>
+                <li class="side-item-box">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='img/MaterialSymbolscadenetaToAppRounded.png') }}" alt="">
+                        <span>Cardeneta</span>
+                    </a>
+                </li>
+                <li class="side-item-box">
+                    <a href="#">
+                        <img src="{{ url_for('static', filename='img/MaterialSymbolsExitToAppRounded.png') }}" alt="">
+                        <span>Sair</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <header>
+            <div class="usuario">
+                <img src="https://randomuser.me/api/portraits/women/24.jpg" alt="">
+                <div>
+                    <strong class="user-nome">Aurora Silva</strong>
+                    <div class="cargo"><span>Professor(a)</span></div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="plano-detalhes">
+                <h1>{{ plano.titulo }}</h1>
+                <p><strong>Data da Aula:</strong> {{ plano.data_aula }}</p>
+                <p><strong>Turma:</strong> {{ plano.turma }}</p>
+                <p><strong>Semestre:</strong> {{ plano.semestre }}</p>
+                <p><strong>Conteúdo Programático:</strong><br> {{ plano.conteudo_programatico }}</p>
+                <p><strong>Metodologia:</strong><br> {{ plano.metodologia }}</p>
+                <p><strong>Recursos Necessários:</strong><br> {{ plano.recursos_necessarios }}</p>
+                <p><strong>Avaliação:</strong><br> {{ plano.avaliacao_observacoes }}</p>
+                <p><strong>Observações:</strong><br> {{ plano.observacoes }}</p>
+                <p><strong>Eventos extraordinários:</strong> {{ plano.eventos_extraordinarios }}</p>
+            </div>
+            <div class="botoes-opcoes">
+                <form method="POST" action="{{ url_for('editar_plano', plano_id=plano.id) }}">
+                    <button type="submit" class="botao-acoes botao-editar">Editar</button>
+                </form>
+                <form method="POST" action="{{ url_for('excluir_plano', plano_id=plano.id) }}" onsubmit="return confirm('Tem certeza que deseja excluir este plano de aula?')">
+                    <button type="submit" class="botao-acoes botao-excluir">Excluir</button>
+                </form>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container-footer">
+                <p>© 2024 PlanLab. Todos os direitos reservados.</p>
+                <p>Contato: <a href="mailto:info@planlab.com">info@planlab.com</a> | Telefone: +55 123 456 7890</p>
+                <div class="social-icons">
+                    <a href="#"><img src="{{ url_for('static', filename='img/SimpleIconsFacebook.png') }}" alt="Facebook"></a>
+                    <a href="#"><img src="{{ url_for('static', filename='img/SimpleIconsInstagram.png') }}" alt="Instagram"></a>
+                    <a href="#"><img src="{{ url_for('static', filename='img/LogosGithubIcon.png') }}" alt="Github"></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
