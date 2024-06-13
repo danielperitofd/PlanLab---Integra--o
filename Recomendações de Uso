@@ -1,0 +1,16 @@
+Podes acrescentar no README.MD dele que para quem for utilizar em uma máquina que não foi a tua, realizar esses procedimentos:
+
+# Remove o ambiente virtual atual
+Remove-Item -Recurse -Force .venv
+
+# Cria um novo ambiente virtual
+python -m venv .venv
+
+# Ativa o ambiente virtual no PowerShell
+& .\.venv\Scripts\Activate
+
+# Instala as dependências listadas no arquivo requirements.txt
+pip install -r requirements.txt
+
+# Instala o framework flask
+pip install flask
